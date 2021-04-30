@@ -9,7 +9,7 @@ const findOrCreate = require("mongoose-findorcreate");
 
 const app = express();
 
-app.use(cors({ origin: "https://dbnotes-db.netlify.app", credentials: true }));
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 
 app.use(
@@ -101,7 +101,7 @@ app.get(
 	"/auth/google/home",
 	passport.authenticate("google", { failureRedirect: "/" }),
 	function (req, res) {
-		res.redirect("https://dbnotes-db.netlify.app");
+		res.redirect("http://localhost:3000/");
 	}
 );
 
