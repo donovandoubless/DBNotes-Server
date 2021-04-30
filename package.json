@@ -1,0 +1,26 @@
+{
+	"name": "db-notes",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js",
+		"src": "cd ../client && npm start",
+		"server": "nodemon server.js",
+		"dev": "concurrently \"npm run server\" \"npm run src\""
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"concurrently": "^6.0.2",
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-session": "^1.17.1",
+		"mongoose": "^5.12.5",
+		"mongoose-findorcreate": "^3.0.0",
+		"passport": "^0.4.1",
+		"passport-google-oauth20": "^2.0.0"
+	}
+}
