@@ -9,7 +9,13 @@ const findOrCreate = require("mongoose-findorcreate");
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+	cors({
+		origin: "http://localhost:3000",
+		methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+		credentials: true,
+	})
+);
 
 app.use(express.json());
 
