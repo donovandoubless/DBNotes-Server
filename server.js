@@ -100,6 +100,10 @@ app.post("/auth/user", (req, res) => {
 	console.log(req.user);
 });
 
+app.get("/auth/user", (req, res) => {
+	console.log("get req", req.user);
+});
+
 app.get(
 	"/auth/google",
 	passport.authenticate("google", { scope: ["profile", "email"] })
