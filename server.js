@@ -24,6 +24,11 @@ app.use(
 		secret: process.env.SESSION_SECRET,
 		resave: true,
 		saveUninitialized: true,
+		cookie: {
+			domain: "http://localhost:3000",
+			sameSite: "none",
+			secure: true,
+		},
 	})
 );
 
@@ -114,7 +119,6 @@ app.get(
 	"/auth/google/home",
 	passport.authenticate("google", { failureRedirect: "/" }),
 	function (req, res) {
-		req.session.user = req.user;
 		res.redirect("http://localhost:3000/");
 	}
 );
