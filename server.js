@@ -109,7 +109,7 @@ passport.use(
 	)
 );
 
-app.post("/auth/user", (req, res) => {
+app.get("/auth/user", (req, res) => {
 	res.send(req.user);
 });
 
@@ -126,7 +126,7 @@ app.get(
 	}
 );
 
-app.post("/auth/logout", (req, res) => {
+app.get("/auth/logout", (req, res) => {
 	if (req.user) {
 		req.logout();
 		res.send("success");
