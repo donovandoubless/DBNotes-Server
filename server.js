@@ -21,7 +21,7 @@ app.use(
 app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.use(express.json());
-app.set("trust proxy", 1);
+app.set("trust proxy", true);
 app.use(
 	session({
 		secret: process.env.SESSION_SECRET,
