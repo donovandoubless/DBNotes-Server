@@ -29,7 +29,7 @@ app.use(
 		saveUninitialized: true,
 		cookie: {
 			path: "/",
-			domain: "https://dbnotes-db.netlify.app/",
+			domain: "https://dbnotes-db.netlify.app",
 			httpOnly: true,
 			secure: true,
 			maxAge: 24 * 60 * 60 * 1000,
