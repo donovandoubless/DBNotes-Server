@@ -22,11 +22,10 @@ app.set("trust proxy", 1);
 app.use(
 	session({
 		secret: process.env.SESSION_SECRET,
-		resave: true,
-		saveUninitialized: true,
+		resave: false,
+		saveUninitialized: false,
 		cookie: {
-			path: "/",
-			domain: "http://localhost:3000",
+			httpOnly: true,
 			secure: true,
 		},
 	})
