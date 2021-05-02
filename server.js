@@ -114,6 +114,7 @@ app.get(
 	"/auth/google/home",
 	passport.authenticate("google", { failureRedirect: "/" }),
 	function (req, res) {
+		req.session.user = req.user;
 		res.redirect("http://localhost:3000/");
 	}
 );
