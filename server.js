@@ -33,6 +33,7 @@ app.use(
 		resave: false,
 		saveUninitialized: false,
 		cookie: {
+			domain: "https://dbnotes-db.netlify.app",
 			httpOnly: true,
 			secure: !isDevMode,
 			maxAge: 24 * 60 * 60 * 1000,
