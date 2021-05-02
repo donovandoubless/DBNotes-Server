@@ -96,7 +96,7 @@ passport.use(
 );
 
 app.post("/auth/user", (req, res) => {
-	res.send(req.user);
+	res.send("Hello");
 });
 
 app.get(
