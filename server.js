@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
 	cors({
-		origin: "https://dbnotes-db.netlify.app/",
+		origin: "https://dbnotes-db.netlify.app",
 		methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 		credentials: true,
 	})
