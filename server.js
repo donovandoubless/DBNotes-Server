@@ -120,7 +120,7 @@ app.get(
 	"/auth/google/home",
 	passport.authenticate("google", { failureRedirect: "/" }),
 	function (req, res) {
-		res.redirect("http://https://dbnotes-db.netlify.app");
+		res.redirect("https://dbnotes-db.netlify.app");
 	}
 );
 
