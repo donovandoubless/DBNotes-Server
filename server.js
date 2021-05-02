@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
 	cors({
-		origin: "http://localhost:3000",
+		origin: "https://dbnotes-db.netlify.app/",
 		methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 		credentials: true,
 	})
@@ -120,7 +120,7 @@ app.get(
 	"/auth/google/home",
 	passport.authenticate("google", { failureRedirect: "/" }),
 	function (req, res) {
-		res.redirect("http://localhost:3000/");
+		res.redirect("http://https://dbnotes-db.netlify.app");
 	}
 );
 
