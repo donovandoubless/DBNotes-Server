@@ -96,12 +96,12 @@ passport.use(
 );
 
 app.post("/auth/user", (req, res) => {
-	res.send("Test");
-	console.log(req.user);
+	res.send(req.user);
+	console.log("post", req.user);
 });
 
 app.get("/auth/user", (req, res) => {
-	console.log("get req", req.user);
+	console.log("get", req.user);
 });
 
 app.get(
