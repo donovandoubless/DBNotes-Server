@@ -5,20 +5,17 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const session = require("express-session");
-const cookieParser = require("cookie-parser");
 const findOrCreate = require("mongoose-findorcreate");
 
 const app = express();
 
 app.use(
 	cors({
-		origin: "https://dbnotes-db.netlify.app",
+		origin: process.env.CORS_ORIGIN,
 		methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 		credentials: true,
 	})
 );
-
-app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.use(express.json());
 
@@ -33,7 +30,6 @@ app.use(
 		resave: false,
 		saveUninitialized: false,
 		cookie: {
-			domain: "https://dbnotes-db.netlify.app",
 			httpOnly: true,
 			secure: !isDevMode,
 			maxAge: 24 * 60 * 60 * 1000,
@@ -45,7 +41,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// LOCAL TESTINNG
+// MONGO LOCAL TESTINNG
 // mongoose.connect("mongodb://localhost:27017/DBNotes", {
 // 	useNewUrlParser: true,
 // 	useUnifiedTopology: true,
@@ -92,7 +88,7 @@ passport.use(
 		{
 			clientID: process.env.CLIENT_ID,
 			clientSecret: process.env.CLIENT_SECRET,
-			callbackURL: "https://mydb-notes.herokuapp.com/auth/google/home",
+			callbackURL: process.env.CALLBACK_URL,
 		},
 		function (accessToken, refreshToken, profile, cb) {
 			User.findOrCreate(
@@ -123,7 +119,7 @@ app.get(
 	"/auth/google/home",
 	passport.authenticate("google", { failureRedirect: "/" }),
 	function (req, res) {
-		res.redirect("https://dbnotes-db.netlify.app");
+		res.redirect(process.env.FRONTEND_URL);
 	}
 );
 
