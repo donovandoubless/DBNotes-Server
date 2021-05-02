@@ -21,7 +21,12 @@ app.use(
 app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.use(express.json());
-app.set("trust proxy", true);
+
+const isDevMode = process.env.NODE_ENV === "development";
+if (!isDevMode) {
+	app.set("trust proxy", 1);
+}
+
 app.use(
 	session({
 		secret: process.env.SESSION_SECRET,
@@ -29,9 +34,9 @@ app.use(
 		saveUninitialized: false,
 		cookie: {
 			httpOnly: true,
-			secure: true,
+			secure: !isDevMode,
 			maxAge: 24 * 60 * 60 * 1000,
-			sameSite: "true",
+			sameSite: "none",
 		},
 	})
 );
